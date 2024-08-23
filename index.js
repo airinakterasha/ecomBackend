@@ -7,9 +7,10 @@ const app = express();
 const corsOptions = {
   origin: [
     "http://localhost:5173",
-    "http://localhost:5174",
-    "https://trust-mart.web.app",
-    "https://trust-mart.firebaseapp.com",
+    "http://localhost:5000",
+    // "http://localhost:5174",
+    // "https://trust-mart.web.app",
+    // "https://trust-mart.firebaseapp.com",
   ],
   credentials: true,
   optionSuccessStatus: 200,
@@ -21,7 +22,9 @@ app.use(express.json());
 require("dotenv").config();
 const port = process.env.PORT || 5000;
 
-const uri = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cluster0.ykkxidd.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0`;
+
+const uri = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cluster0.y7qgnfe.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0`;
+
 
 const client = new MongoClient(uri, {
   serverApi: {
@@ -33,11 +36,11 @@ const client = new MongoClient(uri, {
 
 async function run() {
   try {
-    const database = client.db("trust-mart");
-    const productsCollections = database.collection("emart");
+    const database = client.db("ecomDb");
+    const productsCollections = database.collection("ecomProduct");
 
     app.get("/", (req, res) => {
-      res.send("trust-mart");
+      res.send("welcome to ecom website");
     });
 
     app.get("/products", async (req, res) => {
