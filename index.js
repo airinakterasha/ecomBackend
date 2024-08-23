@@ -7,10 +7,7 @@ const app = express();
 const corsOptions = {
   origin: [
     "http://localhost:5173",
-    "http://localhost:5000",
-    // "http://localhost:5174",
-    // "https://trust-mart.web.app",
-    // "https://trust-mart.firebaseapp.com",
+    "https://ecom100.netlify.app",
   ],
   credentials: true,
   optionSuccessStatus: 200,
